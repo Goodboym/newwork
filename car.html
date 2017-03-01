@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>car</title>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<style type="text/css">
+		*{ margin: 0; padding: 0; }
+		html,body{ width: 100%; height: 100%; }
+		body{ background: url(images/bg.jpg) no-repeat; background-size: 100% 100%;}
+		#box{ width: 100%; height: 100px; position: absolute; bottom:15px; left: 0; overflow: hidden; }
+		@keyframes color{
+			0%{ background: #41e8ea; }
+			25%{ background: #00f606; }
+			50%{ background: #f01212; }
+			75%{ background: #ec2482; }
+			100%{ background: #00f606; }
+		}
+		.car{
+			width: 200px;
+			height: 70px;
+			border: 1px solid #ccc;
+			position: relative;
+			border-radius: 10px;
+			background: #41e8ea;
+			bottom: 0;
+			-webkit-animation: color 1s infinite;
+		}
+		.car span{
+			display: block;
+			width: 20px;
+			height: 20px;
+			background: #000;
+			color: #fff;
+			float: left;
+			text-align: center;
+			margin: 15px;
+			line-height: 20px;
+			font-size: 22px;
+		}
+		.tyre{
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: #3f3f3f;
+			position: absolute;
+			bottom: -15px;
+			animation: fn 1s linear infinite;
+			-webkit-animation: fn 1s linear infinite;
+		}
+		@keyframes fn{
+			from{
+				-webkit-transform: rotate(0deg);
+			}
+			to{
+				-webkit-transform: rotate(360deg);
+			}
+		}
+		.tyre:before{
+			content: "";
+			display: block;
+			width:20px;
+			height: 20px;
+			border-radius: 10px;
+			background: #fff;
+			margin: 5px auto 0;
+		}
+		.tyre1{ left: -15px; }
+		.tyre2{ left: 80px; }
+		.tyre3{ right: -10px; }
+		.gap{
+			position: absolute;
+			left: 10px;
+			top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="car">
+			<span>＋</span>
+			<span>＋</span>
+			<span>＋</span>
+			<span>＋</span>
+			<div class="tyre tyre1">
+				<div class="gap">X</div>
+			</div>
+			<div class="tyre tyre2">
+				<div class="gap">X</div>
+			</div>
+			<div class="tyre tyre3">
+				<div class="gap">X</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(".car").click(function(event){
+		var oWidth = document.body.offsetWidth;
+		$(".car").animate({left:oWidth+15+"px"},5000,function(){
+			$(".car").css("left","-230px");
+		});
+	})
+	$(".car").click();
+	setInterval(function(){
+		$(".car").click();
+	},5000);
+	</script>
+</body>
+</html>
